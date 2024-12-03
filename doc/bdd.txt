@@ -1,0 +1,19 @@
+les jeux
+genre de jeux (catégorie)
+éditeur de jeux
+
+jeux :
+	titre,
+	desc,
+	genre,
+	éditeur
+	
+genre:	
+	nom,
+	jeux associés,
+		:{action, Aventure, RPG, Simulation, Sport, MMORPG}
+
+éditeur:
+	nom,
+	jeux associés
+	

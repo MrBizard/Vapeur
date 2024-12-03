@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" href="/css/games.css">
+</head>
+<body>
+    <button onClick="window.location.href='/games/addGame'">ajouter un jeu</button>
+    {{#each games}}
+        <div>
+            <h2>{{title}}</h2>
+            <p>{{desc}}</p>
+            <p>{{releaseDate}}</p>
+            <a href="/games/{{id}}">Détails</a>
+            <button onClick="window.location.href='/games/editGame/{{id}}'">Modifier</button>
+            <button onClick="window.location.href='/games/suppGame/{{id}}'">Supprimer</button>
+        </div>
+    {{/each}}
+</body>
+</html>
