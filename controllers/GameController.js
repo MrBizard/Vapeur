@@ -8,16 +8,16 @@ const profondeur = "..";
 
 const games = (req, res) => {
     console.log(path.join(__dirname, profondeur));
-    res.render('Games');
+    res.render('Games/games');
 };
 
 const addGameGet = (req, res) => {
     console.log(path.join(__dirname, profondeur));
-    res.render('addGame');
+    res.render('Games/addGame');
 };
 
 const addGamePost = (req, res) => {
     console.log(path.join(__dirname, profondeur));
-    res.redirect(path.join(profondeur, "/games"));
+    res.render(("Games/games"));
 };
 module.exports = {games, addGameGet, addGamePost}

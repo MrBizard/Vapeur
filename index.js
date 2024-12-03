@@ -20,7 +20,7 @@ app.use(express.static("public"));
 //route par default
 app.get("/", (req, res) => {
     console.log(__dirname);
-    res.sendFile(__dirname + '/views/index.html');
+    res.send("/");
 });
 
 //route pour les jeux
