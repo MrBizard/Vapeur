@@ -1,0 +1,11 @@
+<!-- Liste des caetgory -->
+<div class="category-list">
+    {{#each category}}
+        <div class="category-card" id="{{categoryId}}">
+            <h2 class="category-title">{{nom}}</h2>
+            <div class="category-actions">
+                <a class="form-button details-button" href="/Category/{{id}}">Détails</a>
+            </div>
+        </div>
+    {{/each}}
+</div>

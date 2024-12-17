@@ -1,0 +1,18 @@
+<div class="container">
+    <!-- Bouton pour ajouter un jeu -->
+    <button class="form-button" onClick="window.location.href='/Editor/addEditor'">Ajouter un éditeur</button>
+</div>
+
+<!-- Liste des jeux -->
+<div class="editor-list">
+    {{#each games}}
+        <div class="editor-card" id="{{EditorId}}">
+            <h2 class="editor-title">{{name}}</h2>
+            <div class="editor-actions">
+                <a class="form-button details-button" href="/Editor/{{id}}">Détails</a>
+                <button class="form-button edit-button" onClick="window.location.href='/Editor/editGame/{{id}}'">Modifier</button>
+                <button class="form-button delete-button" onClick="window.location.href='/Editor/suppGame/{{id}}'">Supprimer</button>
+            </div>
+        </div>
+    {{/each}}
+</div>

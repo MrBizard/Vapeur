@@ -5,6 +5,8 @@ const hbs = require('hbs');
 
 //local require
 const games = require('./routes/Game.js');
+const editor = require('./routes/Editor.js');
+const category = require('./routes/Category.js');
 
 //variable standard
 const app = express();
@@ -20,12 +22,13 @@ app.use(express.static("public"));
 //route par default
 app.get("/", (req, res) => {
     console.log(__dirname);
-    res.send("/");
+    res.render("games/game");
 });
 
-//route pour les jeux
+//route par default
 app.use('/games', games);
-
+app.use('/editor', editor);
+app.use('/category', category);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
