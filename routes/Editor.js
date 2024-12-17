@@ -4,12 +4,13 @@ const path = require('path');
 const router = express.Router();
 const pathname = path.join(__dirname, "..");
 
-const { editor, addEditorGet, addEditorPost } = require(pathname + "/controllers/EditorController.js");
+const editorController = require(pathname + "/controllers/EditorController.js");
 
-router.get('/', editor);
+router.get('/', editorController.editor);
+router.post('/', editorController.editorPost);
 
-router.get("/addEditor",addEditorGet);
-router.post("/addEditor", addEditorPost);
+router.get("/addEditor",editorController.addEditorGet);
+router.post("/addEditor", editorController.addEditorPost);
 
 module.exports = router;
 

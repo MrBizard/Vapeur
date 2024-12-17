@@ -15,13 +15,13 @@ datasource db {
 
 model Category {
   id        Int      @id @default(autoincrement())
-  nom       String
+  name      String
   Game      Game[]
 }
 
 model Editor{
   id        Int      @id @default(autoincrement())
-  nom       String
+  name      String
   Game      Game[]
 }
 
@@ -34,5 +34,6 @@ model Game {
   desc          String
   editor        Editor   @relation(fields: [editorId], references: [id])
   editorId      Int
+  highlight     Boolean
 }
 

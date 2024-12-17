@@ -2,46 +2,65 @@ const express = require('express');
 const path = require('path');   
 const hbs = require('hbs');
 
+
+
+
 const app = express();
 const profondeur = "..";
 
+const editorDAO = require(path.join(__dirname , profondeur, "DAO/EditorDAO.js"));
 
-const editor = (req, res) => {
-    console.log(__dirname);
-    res.render(("Editor/editor"));
+const editor = async (req, res) => {
+    console.log(__dirname+__filename+":editor");
+    const editor = await editorDAO.getAllEditor();
+    console.log(editor);
+    res.render(("Editor/editor"), {
+        Editor : editor
+    });
+};
+
+const editorPost = async (req, res) => {
+    console.log(__dirname+__filename+":modifEditorGet");
+    const { id, action } = req.body;
+    console.log(id);
+    throw 0;
+    if (action === "edit")
+    {
+        const editor = await editorDAO.getOneEditor(id);
+        res.render('Editor/addEditor', {
+            editor
+        });
+    }
 };
 
 const editorDetail = (req, res) => {
-    console.log(__dirname);
+    console.log(__dirname+__filename+":editorDetail");
     res.render(("Editor/editorDetail"));
 };
 
 const addEditorGet = (req, res) => {
-    console.log(__dirname);
-    res.render('Editor/addEditor');
+    console.log(__dirname+__filename+":addEditorGet");
+    res.render('Editor/addEditor', {
+        id:0,
+        name:""
+    });
 };
 
-const addEditorPost = async (req, res) => {
-    const { title } = req.body;
-    try {
-        await prisma.games.create({
-            data: { title },
-        }); // Ici on ne stock pas le retour de la requête, mais on attend quand même son exécution
-        res.status(201).redirect("/tasks"); // On redirige vers la page des tâches
-    } catch (error) {
-        console.error(error);
-        res.status(400).json({ error: "Task creation failed" });
+const addEditorPost = (req, res) => {
+    console.log(__dirname+__filename+":addEditorPost");
+    const { name } = req.body;
+    try
+    {
+        editorDAO.addEditor(name);
+        res.status(201).redirect("/Editor");
     }
-    res.render(("Editor/editor"));
+    catch
+    {
+        res.status(400).json({ error: "Editor creation failed" });
+    }
+    res.redirect(("/Editor"));
 };
 
-const modifEditorGet = (req, res) => {
-    console.log(__dirname);
-    res.render('Editor/addEditor');
-};
 
-const modifEditorPost = async (req, res) => {
-    res.render(("Editor/editor"));
-};
 
-module.exports = {editor, addEditorGet, addEditorPost}
+module.exports = {editor, editorPost, editorDetail, addEditorGet, addEditorPost}

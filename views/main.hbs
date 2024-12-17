@@ -1,0 +1,15 @@
+<!-- Liste des jeux -->
+<div class="games-list">
+    {{#each games}}
+        <div class="game-card">
+            <h2 class="game-title">{{title}}</h2>
+            <p class="game-desc">{{desc}}</p>
+            <p class="game-release">Sortie : {{releaseDate}}</p>
+            <div class="game-actions">
+                <a class="form-button details-button" href="/games/{{id}}">Détails</a>
+                <button class="form-button edit-button" onClick="window.location.href='/games/editGame/{{id}}'">Modifier</button>
+                <button class="form-button delete-button" onClick="window.location.href='/games/suppGame/{{id}}'">Supprimer</button>
+            </div>
+        </div>
+    {{/each}}
+</div>

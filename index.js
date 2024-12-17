@@ -2,6 +2,8 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const bodyParser = require("body-parser");
+
 
 //local require
 const games = require('./routes/Game.js');
@@ -22,8 +24,10 @@ app.use(express.static("public"));
 //route par default
 app.get("/", (req, res) => {
     console.log(__dirname);
-    res.render("games/game");
+    res.render("main");
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //route par default
 app.use('/games', games);

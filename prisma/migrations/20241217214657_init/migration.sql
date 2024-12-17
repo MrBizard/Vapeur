@@ -1,22 +1,24 @@
 -- CreateTable
 CREATE TABLE "Category" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "nom" TEXT NOT NULL
+    "name" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Editor" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "nom" TEXT NOT NULL
+    "name" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Game" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "titre" TEXT NOT NULL,
+    "releaseDate" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "categoryId" INTEGER NOT NULL,
     "desc" TEXT NOT NULL,
     "editorId" INTEGER NOT NULL,
+    "highlight" BOOLEAN NOT NULL,
     CONSTRAINT "Game_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Game_editorId_fkey" FOREIGN KEY ("editorId") REFERENCES "Editor" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

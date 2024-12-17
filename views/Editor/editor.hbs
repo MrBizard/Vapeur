@@ -5,14 +5,17 @@
 
 <!-- Liste des jeux -->
 <div class="editor-list">
-    {{#each games}}
-        <div class="editor-card" id="{{EditorId}}">
-            <h2 class="editor-title">{{name}}</h2>
-            <div class="editor-actions">
+    {{#each Editor}}
+        
+        <div class="editor-card" id="{{id}}">
+            <form method="POST" class="editor-actions"></form>
+                <h2 class="editor-title">{{name}}</h2>
+                <input type="hidden" name="id" value="{{id}}"/>
                 <a class="form-button details-button" href="/Editor/{{id}}">Détails</a>
-                <button class="form-button edit-button" onClick="window.location.href='/Editor/editGame/{{id}}'">Modifier</button>
-                <button class="form-button delete-button" onClick="window.location.href='/Editor/suppGame/{{id}}'">Supprimer</button>
-            </div>
+                <button name="action" value="edit" class="form-button edit-button">Modifier</button>
+                <button name="action" value="supp" class="form-button delete-button">Supprimer</button>
+            </form>
         </div>
+        
     {{/each}}
 </div>
