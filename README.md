@@ -6,7 +6,7 @@
     npm i
 
 - créer un fichier ".env" a la racine, et ecrire cet ligne dedans :
-    database="file:./database.db"
+    DATABASE_URL="file:./database.db"
 
 - en ligne de comande a la racine du fichier :
     npm start
