@@ -23,10 +23,9 @@ const editorPost = async (req, res) => {
     console.log(__dirname+__filename+":modifEditorGet");
     const { id, action } = req.body;
     console.log(id);
-    throw 0;
     if (action === "edit")
     {
-        const editor = await editorDAO.getOneEditor(id);
+        const editor = await editorDAO.getOneEditor(Number(id));
         res.render('Editor/addEditor', {
             editor
         });
